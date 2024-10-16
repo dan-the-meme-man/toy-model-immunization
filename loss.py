@@ -3,7 +3,7 @@ import torch.nn as nn
 from model import LeNet
 
 class CrossEntropyWithGradientPenalty(nn.Module):
-    def __init__(self, model, alpha=0.1):
+    def __init__(self, model, alpha_schedule):
         """
         Initializes the custom loss function.
         
@@ -13,7 +13,9 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         """
         super(CrossEntropyWithGradientPenalty, self).__init__()
         self.model = model
-        self.alpha = alpha
+        self.alpha_schedule = alpha_schedule
+        self.alpha_index = 0
+        self.alpha = self.alpha_schedule[self.alpha_index]
         self.cross_entropy = nn.CrossEntropyLoss()
 
     def forward(self, outputs, targets):
@@ -44,7 +46,10 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         loss = ce_loss + self.alpha * grad_norm
         
         return loss
-
+    
+    def step(self):
+        self.alpha_index += 1
+        self.alpha = self.alpha_schedule[self.alpha_index]
 
 def main():
     inputs = torch.randn(32, 1, 28, 28).to('cuda')

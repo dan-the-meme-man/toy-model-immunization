@@ -1,5 +1,5 @@
+from time import time
 import torch
-import torch.nn as nn
 from torch.nn import CrossEntropyLoss
 import torch.optim as optim
 from torch.utils.data import DataLoader
@@ -12,15 +12,16 @@ from train import train, validate
 
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-alpha = 0.1
-criterion = CrossEntropyWithGradientPenalty(m, alpha=alpha)
+alpha_schedule = [0, 0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1]
+criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule)
 # criterion = CrossEntropyLoss()
 optimizer = optim.Adam(m.parameters(), lr=1e-4)
 batch_size = 32
-epochs = 10
+epochs = len(alpha_schedule)
 
 print('criterion:', criterion)
-print('alpha:', alpha)
+if not isinstance(criterion, CrossEntropyLoss):
+    print('alpha schedule:', alpha_schedule)
 print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
 print('batch_size:', batch_size)
 print('epochs:', epochs)
@@ -61,6 +62,8 @@ val_loader = DataLoader(
 best_err1 = 100
 best_err5 = 100
 
+start = time()
+
 # epoch loop
 for epoch in range(0, epochs):
 
@@ -91,3 +94,11 @@ for epoch in range(0, epochs):
 
     print('Current best error rate (top-1 and top-5 error):', best_err1, best_err5, '\n')
 print('Best error rate (top-1 and top-5 error):', best_err1, best_err5)
+
+print('\ncriterion:', criterion)
+if not isinstance(criterion, CrossEntropyLoss):
+    print('alpha schedule:', alpha_schedule)
+print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
+print('batch_size:', batch_size)
+print('epochs:', epochs)
+print(f'total time: {time() - start:.3f} seconds')

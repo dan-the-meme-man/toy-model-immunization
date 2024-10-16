@@ -1,5 +1,7 @@
+from time import time
 import torch
 from sklearn.metrics import classification_report
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class AverageMeter(object):
@@ -61,12 +63,15 @@ def train(
 
     # track average and worst losses
     losses = AverageMeter()
+    times = []
 
     # set training mode
     model.train()
 
     # iterate over data - automatically shuffled
     for i, (images, labels) in enumerate(train_loader):
+        
+        start = time()
 
         # put batch of image tensors on GPU
         images = images.to(device)
@@ -97,9 +102,14 @@ def train(
                 f'Epoch: [{epoch+1}/{epochs}][{i:4}/{len(train_loader)}]\t'
                 f'Loss: {losses.val:.4f} ({losses.avg:.4f} on avg)'
             )
+            
+        times.append(time() - start)
 
     # log again at end of epoch
     print(f'\n* Epoch: [{epoch+1}/{epochs}]\tTrain loss: {losses.avg:.3f}\n')
+    print(f'Criterion: {criterion}, average time: {sum(times)/len(times):.3f} seconds\n')
+    
+    criterion.step()
 
     return losses.avg
 
