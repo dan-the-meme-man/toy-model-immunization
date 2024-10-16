@@ -1,4 +1,4 @@
-from calendar import c
+import argparse
 from time import time
 import torch
 from torch.nn import CrossEntropyLoss
@@ -11,21 +11,28 @@ from loss import CrossEntropyWithGradientPenalty
 from model import LeNet
 from train import train, validate
 
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--criterion', '-c', type=str, default='ce')
+
+args = parser.parse_args()
+
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
 alpha_schedule = [0, 0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1]
-criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule)
-# criterion = CrossEntropyLoss()
+if args.criterion == 'gp':
+    criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule)
+elif args.criterion == 'ce':
+    criterion = CrossEntropyLoss()
+else:
+    raise ValueError(f'Invalid criterion: {args.criterion}. Options are "ce" and "gp".')
 optimizer = optim.Adam(m.parameters(), lr=1e-4)
 batch_size = 32
 epochs = len(alpha_schedule)
 
-print('criterion:', criterion)
+print('criterion:', args.criterion)
 if not isinstance(criterion, CrossEntropyLoss):
     print('alpha schedule:', alpha_schedule)
-    crit_name = 'gradient_penalty'
-else:
-    crit_name = 'cross_entropy'
 print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
 print('batch_size:', batch_size)
 print('epochs:', epochs)
@@ -99,7 +106,7 @@ for epoch in range(0, epochs):
     print('Current best error rate (top-1 and top-5 error):', best_err1, best_err5, '\n')
 print('Best error rate (top-1 and top-5 error):', best_err1, best_err5)
 
-print('\ncriterion:', criterion)
+print('\ncriterion:', args.criterion)
 if not isinstance(criterion, CrossEntropyLoss):
     print('alpha schedule:', alpha_schedule)
 print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
@@ -107,4 +114,5 @@ print('batch_size:', batch_size)
 print('epochs:', epochs)
 print(f'total time: {time() - start:.3f} seconds')
 
-torch.save(m.state_dict(), f'{crit_name}_{'_'.join(alpha_schedule)}.pth')
+name = f'{args.criterion}_{"_".join([str(x) for x in alpha_schedule])}'
+torch.save(m.state_dict(), f'{name}.pth')
