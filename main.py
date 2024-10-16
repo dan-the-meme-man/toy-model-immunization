@@ -9,10 +9,10 @@ from loss import CrossEntropyWithGradientPenalty
 from model import LeNet
 from train import train, validate
 
-model = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
+m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-criterion = CrossEntropyWithGradientPenalty(model, alpha=0.1)
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = CrossEntropyWithGradientPenalty(m, alpha=0.1)
+optimizer = optim.Adam(m.parameters(), lr=0.001)
 batch_size = 32
 epochs = 3
 
@@ -58,7 +58,7 @@ for epoch in range(0, epochs):
     # train for one epoch
     train_loss = train(
         train_loader,
-        model,
+        m,
         criterion,
         optimizer,
         epoch,
@@ -68,7 +68,7 @@ for epoch in range(0, epochs):
     # evaluate on validation set
     err1, err5, val_loss = validate(
         val_loader,
-        model,
+        m,
         criterion,
         epoch,
         epochs
