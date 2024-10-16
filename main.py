@@ -23,6 +23,9 @@ epochs = len(alpha_schedule)
 print('criterion:', criterion)
 if not isinstance(criterion, CrossEntropyLoss):
     print('alpha schedule:', alpha_schedule)
+    crit_name = 'gradient_penalty'
+else:
+    crit_name = 'cross_entropy'
 print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
 print('batch_size:', batch_size)
 print('epochs:', epochs)
@@ -104,4 +107,4 @@ print('batch_size:', batch_size)
 print('epochs:', epochs)
 print(f'total time: {time() - start:.3f} seconds')
 
-torch.save(m.state_dict(), f'{criterion}_{alpha_schedule}.pth')
+torch.save(m.state_dict(), f'{crit_name}_{'_'.join(alpha_schedule)}.pth')
