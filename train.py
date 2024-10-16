@@ -83,7 +83,7 @@ def train(
         loss = criterion(outputs, labels)
 
         # back propagation
-        loss.backward()
+        # loss.backward()
 
         # update model parameters
         optimizer.step()

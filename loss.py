@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from model import LeNet
 
 class CrossEntropyWithGradientPenalty(nn.Module):
     def __init__(self, model, alpha=0.1):
@@ -36,10 +37,32 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         
         # Compute the norm of the gradients
         grad_norm = sum(
-            torch.norm(g.detach())**2 for g in grads if g is not None
+            torch.norm(g)**2 for g in grads if g is not None
         )
         
         # Combined loss: cross-entropy loss + alpha * gradient penalty
         loss = ce_loss + self.alpha * grad_norm
         
         return loss
+
+
+def main():
+    inputs = torch.randn(32, 1, 28, 28).to('cuda')
+    targets = torch.randint(0, 10, (32,)).to('cuda')
+    
+    m = LeNet().to('cuda')
+    
+    outputs = m(inputs)
+    
+    criterion = CrossEntropyWithGradientPenalty(m, alpha=0.1)
+    
+    loss = criterion(outputs, targets)
+    
+    loss.backward()
+    
+    optimizer = torch.optim.Adam(m.parameters(), lr=0.001)
+    
+    optimizer.step()
+    
+if __name__ == '__main__':
+    main()
