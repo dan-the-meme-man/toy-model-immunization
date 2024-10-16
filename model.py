@@ -17,7 +17,7 @@ class LeNet(nn.Module):
 
     def forward(self, x):
         # average pooling over a 2x2 window
-        x = F.avg_pool2d(F.sigmoid(self.conv1(x)), 2, padding=2)
+        x = F.avg_pool2d(F.sigmoid(self.conv1(x)), 2, padding=1)
         # If the size is a square, you can specify with a single number
         x = F.avg_pool2d(F.sigmoid(self.conv2(x)), 2)
         x = torch.flatten(x, 1) # flatten all dimensions except the batch dimension
