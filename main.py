@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torch.nn import CrossEntropyLoss
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import transforms
@@ -11,10 +12,11 @@ from train import train, validate
 
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-criterion = CrossEntropyWithGradientPenalty(m, alpha=0.0)
-optimizer = optim.Adam(m.parameters(), lr=0.001)
+# criterion = CrossEntropyWithGradientPenalty(m, alpha=0.0)
+criterion = CrossEntropyLoss()
+optimizer = optim.Adam(m.parameters(), lr=1e-4)
 batch_size = 32
-epochs = 3
+epochs = 10
 
 mnist_transform = transforms.Compose([
     transforms.ToTensor(),
