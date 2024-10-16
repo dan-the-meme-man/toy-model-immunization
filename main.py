@@ -1,3 +1,4 @@
+from calendar import c
 from time import time
 import torch
 from torch.nn import CrossEntropyLoss
@@ -102,3 +103,5 @@ print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
 print('batch_size:', batch_size)
 print('epochs:', epochs)
 print(f'total time: {time() - start:.3f} seconds')
+
+torch.save(m.state_dict(), f'{criterion}_{alpha_schedule}.pth')
