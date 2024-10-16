@@ -14,8 +14,7 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         super(CrossEntropyWithGradientPenalty, self).__init__()
         self.model = model
         self.alpha_schedule = alpha_schedule
-        self.alpha_index = 0
-        self.alpha = self.alpha_schedule[self.alpha_index]
+        self.alpha_index = -1
         self.cross_entropy = nn.CrossEntropyLoss()
 
     def forward(self, outputs, targets):

@@ -67,6 +67,9 @@ def train(
 
     # set training mode
     model.train()
+    
+    # step the criterion scheduler
+    criterion.step()
 
     # iterate over data - automatically shuffled
     for i, (images, labels) in enumerate(train_loader):
@@ -108,8 +111,6 @@ def train(
     # log again at end of epoch
     print(f'\n* Epoch: [{epoch+1}/{epochs}]\tTrain loss: {losses.avg:.3f}\n')
     print(f'Criterion: {criterion}, average time: {sum(times)/len(times):.3f} seconds\n')
-    
-    criterion.step()
 
     return losses.avg
 
