@@ -12,11 +12,18 @@ from train import train, validate
 
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-# criterion = CrossEntropyWithGradientPenalty(m, alpha=0.0)
+alpha = 0.1
+criterion = CrossEntropyWithGradientPenalty(m, alpha=alpha)
 criterion = CrossEntropyLoss()
 optimizer = optim.Adam(m.parameters(), lr=1e-4)
 batch_size = 32
 epochs = 10
+
+print('criterion:', criterion)
+print('alpha:', alpha)
+print('optimizer:', optimizer, 'lr:', optimizer.param_groups[0]['lr'])
+print('batch_size:', batch_size)
+print('epochs:', epochs)
 
 mnist_transform = transforms.Compose([
     transforms.ToTensor(),
