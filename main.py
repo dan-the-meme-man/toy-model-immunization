@@ -14,7 +14,7 @@ m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
 alpha = 0.1
 criterion = CrossEntropyWithGradientPenalty(m, alpha=alpha)
-criterion = CrossEntropyLoss()
+# criterion = CrossEntropyLoss()
 optimizer = optim.Adam(m.parameters(), lr=1e-4)
 batch_size = 32
 epochs = 10
