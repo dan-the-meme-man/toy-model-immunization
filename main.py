@@ -11,7 +11,7 @@ from train import train, validate
 
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-criterion = CrossEntropyWithGradientPenalty(m, alpha=0.1)
+criterion = CrossEntropyWithGradientPenalty(m, alpha=0.0)
 optimizer = optim.Adam(m.parameters(), lr=0.001)
 batch_size = 32
 epochs = 3
