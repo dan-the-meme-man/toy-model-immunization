@@ -2,6 +2,8 @@ from time import time
 import torch
 from sklearn.metrics import classification_report
 
+from loss import CrossEntropyWithGradientPenalty
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class AverageMeter(object):
@@ -69,7 +71,8 @@ def train(
     model.train()
     
     # step the criterion scheduler
-    criterion.step()
+    if isinstance(criterion, CrossEntropyWithGradientPenalty):
+        criterion.step()
 
     # iterate over data - automatically shuffled
     for i, (images, labels) in enumerate(train_loader):
