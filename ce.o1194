@@ -1,0 +1,581 @@
+Wed Oct 16 21:18:09 2024       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA L4                      On  | 00000000:00:03.0 Off |                    0 |
+| N/A   42C    P8              16W /  72W |      4MiB / 23034MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+criterion: ce
+optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0001
+    maximize: False
+    weight_decay: 0
+) lr: 0.0001
+batch_size: 32
+epochs: 10
+Epoch: [1/10][   0/1875]	Loss: 2.2972 (2.2972 on avg)
+Epoch: [1/10][ 100/1875]	Loss: 2.3252 (2.3181 on avg)
+Epoch: [1/10][ 200/1875]	Loss: 2.2909 (2.3103 on avg)
+Epoch: [1/10][ 300/1875]	Loss: 2.3020 (2.3080 on avg)
+Epoch: [1/10][ 400/1875]	Loss: 2.2889 (2.3059 on avg)
+Epoch: [1/10][ 500/1875]	Loss: 2.3053 (2.3047 on avg)
+Epoch: [1/10][ 600/1875]	Loss: 2.2984 (2.3043 on avg)
+Epoch: [1/10][ 700/1875]	Loss: 2.2864 (2.3036 on avg)
+Epoch: [1/10][ 800/1875]	Loss: 2.3126 (2.3029 on avg)
+Epoch: [1/10][ 900/1875]	Loss: 2.2921 (2.3021 on avg)
+Epoch: [1/10][1000/1875]	Loss: 2.2723 (2.3007 on avg)
+Epoch: [1/10][1100/1875]	Loss: 2.2676 (2.2981 on avg)
+Epoch: [1/10][1200/1875]	Loss: 2.2673 (2.2940 on avg)
+Epoch: [1/10][1300/1875]	Loss: 2.2128 (2.2873 on avg)
+Epoch: [1/10][1400/1875]	Loss: 2.1922 (2.2774 on avg)
+Epoch: [1/10][1500/1875]	Loss: 1.9463 (2.2639 on avg)
+Epoch: [1/10][1600/1875]	Loss: 1.9395 (2.2470 on avg)
+Epoch: [1/10][1700/1875]	Loss: 1.7991 (2.2271 on avg)
+Epoch: [1/10][1800/1875]	Loss: 1.7930 (2.2045 on avg)
+
+* Epoch: [1/10]	Train loss: 2.186
+
+Criterion: CrossEntropyLoss(), average time: 0.004 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [1/10][   0/313]	Loss: 1.6947 (1.6947 on avg)	Top-1 err: 53.1250 (53.1250 on avg)	Top-5 err: 6.2500 (6.2500 on avg)
+Test (on val set): [1/10][ 100/313]	Loss: 1.7590 (1.7074 on avg)	Top-1 err: 53.1250 (40.5322 on avg)	Top-5 err: 6.2500 (4.7649 on avg)
+Test (on val set): [1/10][ 200/313]	Loss: 1.7259 (1.7029 on avg)	Top-1 err: 34.3750 (40.4384 on avg)	Top-5 err: 3.1250 (4.8041 on avg)
+Test (on val set): [1/10][ 300/313]	Loss: 1.6768 (1.7000 on avg)	Top-1 err: 37.5000 (40.1163 on avg)	Top-5 err: 0.0000 (4.8692 on avg)
+
+* Epoch: [1/10]	Test loss: 1.701	Top-1 err: 40.280	Top-5 err: 4.920
+
+              precision    recall  f1-score   support
+
+           0       0.52      0.96      0.68       980
+           1       0.57      0.99      0.72      1135
+           2       0.74      0.60      0.66      1032
+           3       0.55      0.49      0.52      1010
+           4       0.61      0.64      0.62       982
+           5       0.00      0.00      0.00       892
+           6       0.81      0.85      0.83       958
+           7       0.54      0.77      0.63      1028
+           8       0.65      0.13      0.21       974
+           9       0.56      0.44      0.49      1009
+
+    accuracy                           0.60     10000
+   macro avg       0.56      0.59      0.54     10000
+weighted avg       0.56      0.60      0.54     10000
+
+Current best error rate (top-1 and top-5 error): 40.28 4.92 
+
+Epoch: [2/10][   0/1875]	Loss: 1.6000 (1.6000 on avg)
+Epoch: [2/10][ 100/1875]	Loss: 1.6738 (1.6683 on avg)
+Epoch: [2/10][ 200/1875]	Loss: 1.4574 (1.6283 on avg)
+Epoch: [2/10][ 300/1875]	Loss: 1.4627 (1.5865 on avg)
+Epoch: [2/10][ 400/1875]	Loss: 1.3884 (1.5504 on avg)
+Epoch: [2/10][ 500/1875]	Loss: 1.4011 (1.5117 on avg)
+Epoch: [2/10][ 600/1875]	Loss: 1.3141 (1.4763 on avg)
+Epoch: [2/10][ 700/1875]	Loss: 1.1153 (1.4426 on avg)
+Epoch: [2/10][ 800/1875]	Loss: 1.0530 (1.4129 on avg)
+Epoch: [2/10][ 900/1875]	Loss: 1.1720 (1.3835 on avg)
+Epoch: [2/10][1000/1875]	Loss: 0.9165 (1.3562 on avg)
+Epoch: [2/10][1100/1875]	Loss: 1.0834 (1.3299 on avg)
+Epoch: [2/10][1200/1875]	Loss: 1.0009 (1.3053 on avg)
+Epoch: [2/10][1300/1875]	Loss: 1.1243 (1.2806 on avg)
+Epoch: [2/10][1400/1875]	Loss: 0.8699 (1.2597 on avg)
+Epoch: [2/10][1500/1875]	Loss: 0.8435 (1.2378 on avg)
+Epoch: [2/10][1600/1875]	Loss: 0.8704 (1.2190 on avg)
+Epoch: [2/10][1700/1875]	Loss: 1.0298 (1.2010 on avg)
+Epoch: [2/10][1800/1875]	Loss: 0.9709 (1.1840 on avg)
+
+* Epoch: [2/10]	Train loss: 1.172
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [2/10][   0/313]	Loss: 0.7753 (0.7753 on avg)	Top-1 err: 18.7500 (18.7500 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [2/10][ 100/313]	Loss: 0.9384 (0.8514 on avg)	Top-1 err: 31.2500 (23.5458 on avg)	Top-5 err: 3.1250 (1.2376 on avg)
+Test (on val set): [2/10][ 200/313]	Loss: 0.9411 (0.8409 on avg)	Top-1 err: 31.2500 (23.1810 on avg)	Top-5 err: 3.1250 (1.3371 on avg)
+Test (on val set): [2/10][ 300/313]	Loss: 1.0855 (0.8435 on avg)	Top-1 err: 34.3750 (22.9236 on avg)	Top-5 err: 6.2500 (1.4431 on avg)
+
+* Epoch: [2/10]	Test loss: 0.842	Top-1 err: 22.870	Top-5 err: 1.400
+
+              precision    recall  f1-score   support
+
+           0       0.86      0.95      0.90       980
+           1       0.91      0.98      0.95      1135
+           2       0.80      0.78      0.79      1032
+           3       0.66      0.77      0.71      1010
+           4       0.70      0.78      0.74       982
+           5       0.66      0.39      0.49       892
+           6       0.85      0.94      0.89       958
+           7       0.79      0.86      0.82      1028
+           8       0.69      0.56      0.62       974
+           9       0.71      0.63      0.67      1009
+
+    accuracy                           0.77     10000
+   macro avg       0.76      0.76      0.76     10000
+weighted avg       0.77      0.77      0.76     10000
+
+Current best error rate (top-1 and top-5 error): 22.87 1.4 
+
+Epoch: [3/10][   0/1875]	Loss: 1.0024 (1.0024 on avg)
+Epoch: [3/10][ 100/1875]	Loss: 0.8457 (0.8314 on avg)
+Epoch: [3/10][ 200/1875]	Loss: 0.5784 (0.8226 on avg)
+Epoch: [3/10][ 300/1875]	Loss: 0.8617 (0.8207 on avg)
+Epoch: [3/10][ 400/1875]	Loss: 0.6998 (0.8071 on avg)
+Epoch: [3/10][ 500/1875]	Loss: 0.7343 (0.8013 on avg)
+Epoch: [3/10][ 600/1875]	Loss: 0.7277 (0.7921 on avg)
+Epoch: [3/10][ 700/1875]	Loss: 0.6540 (0.7820 on avg)
+Epoch: [3/10][ 800/1875]	Loss: 0.9693 (0.7750 on avg)
+Epoch: [3/10][ 900/1875]	Loss: 0.7164 (0.7694 on avg)
+Epoch: [3/10][1000/1875]	Loss: 0.7056 (0.7614 on avg)
+Epoch: [3/10][1100/1875]	Loss: 0.6368 (0.7547 on avg)
+Epoch: [3/10][1200/1875]	Loss: 0.8555 (0.7485 on avg)
+Epoch: [3/10][1300/1875]	Loss: 0.6823 (0.7403 on avg)
+Epoch: [3/10][1400/1875]	Loss: 0.4969 (0.7335 on avg)
+Epoch: [3/10][1500/1875]	Loss: 0.8251 (0.7264 on avg)
+Epoch: [3/10][1600/1875]	Loss: 0.6376 (0.7205 on avg)
+Epoch: [3/10][1700/1875]	Loss: 0.7781 (0.7148 on avg)
+Epoch: [3/10][1800/1875]	Loss: 0.4800 (0.7084 on avg)
+
+* Epoch: [3/10]	Train loss: 0.703
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [3/10][   0/313]	Loss: 0.6877 (0.6877 on avg)	Top-1 err: 12.5000 (12.5000 on avg)	Top-5 err: 6.2500 (6.2500 on avg)
+Test (on val set): [3/10][ 100/313]	Loss: 0.6801 (0.5713 on avg)	Top-1 err: 21.8750 (15.9035 on avg)	Top-5 err: 3.1250 (1.1139 on avg)
+Test (on val set): [3/10][ 200/313]	Loss: 1.0362 (0.5685 on avg)	Top-1 err: 25.0000 (15.7805 on avg)	Top-5 err: 9.3750 (0.9795 on avg)
+Test (on val set): [3/10][ 300/313]	Loss: 0.7284 (0.5730 on avg)	Top-1 err: 31.2500 (16.2479 on avg)	Top-5 err: 3.1250 (0.9448 on avg)
+
+* Epoch: [3/10]	Test loss: 0.576	Top-1 err: 16.370	Top-5 err: 0.910
+
+              precision    recall  f1-score   support
+
+           0       0.91      0.97      0.94       980
+           1       0.95      0.97      0.96      1135
+           2       0.86      0.84      0.85      1032
+           3       0.79      0.84      0.81      1010
+           4       0.76      0.84      0.79       982
+           5       0.72      0.66      0.68       892
+           6       0.90      0.94      0.92       958
+           7       0.89      0.88      0.88      1028
+           8       0.75      0.67      0.70       974
+           9       0.80      0.73      0.76      1009
+
+    accuracy                           0.84     10000
+   macro avg       0.83      0.83      0.83     10000
+weighted avg       0.83      0.84      0.83     10000
+
+Current best error rate (top-1 and top-5 error): 16.37 0.91 
+
+Epoch: [4/10][   0/1875]	Loss: 0.5057 (0.5057 on avg)
+Epoch: [4/10][ 100/1875]	Loss: 0.6056 (0.5753 on avg)
+Epoch: [4/10][ 200/1875]	Loss: 1.0120 (0.5825 on avg)
+Epoch: [4/10][ 300/1875]	Loss: 0.6928 (0.5780 on avg)
+Epoch: [4/10][ 400/1875]	Loss: 0.4752 (0.5739 on avg)
+Epoch: [4/10][ 500/1875]	Loss: 0.5012 (0.5686 on avg)
+Epoch: [4/10][ 600/1875]	Loss: 0.5996 (0.5643 on avg)
+Epoch: [4/10][ 700/1875]	Loss: 0.6356 (0.5603 on avg)
+Epoch: [4/10][ 800/1875]	Loss: 0.4019 (0.5542 on avg)
+Epoch: [4/10][ 900/1875]	Loss: 0.3786 (0.5495 on avg)
+Epoch: [4/10][1000/1875]	Loss: 0.3770 (0.5464 on avg)
+Epoch: [4/10][1100/1875]	Loss: 0.5109 (0.5405 on avg)
+Epoch: [4/10][1200/1875]	Loss: 0.7045 (0.5369 on avg)
+Epoch: [4/10][1300/1875]	Loss: 0.6141 (0.5321 on avg)
+Epoch: [4/10][1400/1875]	Loss: 0.6642 (0.5286 on avg)
+Epoch: [4/10][1500/1875]	Loss: 0.3564 (0.5241 on avg)
+Epoch: [4/10][1600/1875]	Loss: 0.3064 (0.5213 on avg)
+Epoch: [4/10][1700/1875]	Loss: 0.5212 (0.5179 on avg)
+Epoch: [4/10][1800/1875]	Loss: 0.3178 (0.5146 on avg)
+
+* Epoch: [4/10]	Train loss: 0.511
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [4/10][   0/313]	Loss: 0.4837 (0.4837 on avg)	Top-1 err: 12.5000 (12.5000 on avg)	Top-5 err: 3.1250 (3.1250 on avg)
+Test (on val set): [4/10][ 100/313]	Loss: 0.4163 (0.4403 on avg)	Top-1 err: 9.3750 (12.6856 on avg)	Top-5 err: 0.0000 (0.5879 on avg)
+Test (on val set): [4/10][ 200/313]	Loss: 0.4069 (0.4363 on avg)	Top-1 err: 9.3750 (12.3134 on avg)	Top-5 err: 0.0000 (0.6530 on avg)
+Test (on val set): [4/10][ 300/313]	Loss: 0.6124 (0.4361 on avg)	Top-1 err: 21.8750 (12.2612 on avg)	Top-5 err: 3.1250 (0.6229 on avg)
+
+* Epoch: [4/10]	Test loss: 0.437	Top-1 err: 12.310	Top-5 err: 0.610
+
+              precision    recall  f1-score   support
+
+           0       0.93      0.98      0.95       980
+           1       0.96      0.97      0.97      1135
+           2       0.90      0.88      0.89      1032
+           3       0.84      0.89      0.87      1010
+           4       0.86      0.85      0.85       982
+           5       0.77      0.77      0.77       892
+           6       0.92      0.94      0.93       958
+           7       0.90      0.90      0.90      1028
+           8       0.82      0.75      0.78       974
+           9       0.83      0.82      0.82      1009
+
+    accuracy                           0.88     10000
+   macro avg       0.87      0.87      0.87     10000
+weighted avg       0.88      0.88      0.88     10000
+
+Current best error rate (top-1 and top-5 error): 12.31 0.61 
+
+Epoch: [5/10][   0/1875]	Loss: 0.4162 (0.4162 on avg)
+Epoch: [5/10][ 100/1875]	Loss: 0.2940 (0.4279 on avg)
+Epoch: [5/10][ 200/1875]	Loss: 0.3219 (0.4364 on avg)
+Epoch: [5/10][ 300/1875]	Loss: 0.4575 (0.4394 on avg)
+Epoch: [5/10][ 400/1875]	Loss: 0.5159 (0.4363 on avg)
+Epoch: [5/10][ 500/1875]	Loss: 0.2775 (0.4290 on avg)
+Epoch: [5/10][ 600/1875]	Loss: 0.5004 (0.4299 on avg)
+Epoch: [5/10][ 700/1875]	Loss: 0.2506 (0.4248 on avg)
+Epoch: [5/10][ 800/1875]	Loss: 0.2968 (0.4238 on avg)
+Epoch: [5/10][ 900/1875]	Loss: 0.4358 (0.4212 on avg)
+Epoch: [5/10][1000/1875]	Loss: 0.5904 (0.4201 on avg)
+Epoch: [5/10][1100/1875]	Loss: 0.2697 (0.4170 on avg)
+Epoch: [5/10][1200/1875]	Loss: 0.5418 (0.4146 on avg)
+Epoch: [5/10][1300/1875]	Loss: 0.4949 (0.4121 on avg)
+Epoch: [5/10][1400/1875]	Loss: 0.4613 (0.4113 on avg)
+Epoch: [5/10][1500/1875]	Loss: 0.6157 (0.4091 on avg)
+Epoch: [5/10][1600/1875]	Loss: 0.1985 (0.4063 on avg)
+Epoch: [5/10][1700/1875]	Loss: 0.3230 (0.4046 on avg)
+Epoch: [5/10][1800/1875]	Loss: 0.3319 (0.4032 on avg)
+
+* Epoch: [5/10]	Train loss: 0.402
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [5/10][   0/313]	Loss: 0.2931 (0.2931 on avg)	Top-1 err: 6.2500 (6.2500 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [5/10][ 100/313]	Loss: 0.2994 (0.3196 on avg)	Top-1 err: 12.5000 (8.9109 on avg)	Top-5 err: 0.0000 (0.1856 on avg)
+Test (on val set): [5/10][ 200/313]	Loss: 0.3950 (0.3405 on avg)	Top-1 err: 9.3750 (9.5149 on avg)	Top-5 err: 0.0000 (0.2954 on avg)
+Test (on val set): [5/10][ 300/313]	Loss: 0.3467 (0.3508 on avg)	Top-1 err: 3.1250 (9.9979 on avg)	Top-5 err: 0.0000 (0.3738 on avg)
+
+* Epoch: [5/10]	Test loss: 0.350	Top-1 err: 9.970	Top-5 err: 0.380
+
+              precision    recall  f1-score   support
+
+           0       0.94      0.98      0.96       980
+           1       0.97      0.97      0.97      1135
+           2       0.91      0.90      0.90      1032
+           3       0.89      0.88      0.89      1010
+           4       0.86      0.89      0.88       982
+           5       0.84      0.83      0.84       892
+           6       0.94      0.95      0.94       958
+           7       0.92      0.90      0.91      1028
+           8       0.85      0.84      0.85       974
+           9       0.86      0.84      0.85      1009
+
+    accuracy                           0.90     10000
+   macro avg       0.90      0.90      0.90     10000
+weighted avg       0.90      0.90      0.90     10000
+
+Current best error rate (top-1 and top-5 error): 9.97 0.38 
+
+Epoch: [6/10][   0/1875]	Loss: 0.4060 (0.4060 on avg)
+Epoch: [6/10][ 100/1875]	Loss: 0.4167 (0.3697 on avg)
+Epoch: [6/10][ 200/1875]	Loss: 0.5508 (0.3562 on avg)
+Epoch: [6/10][ 300/1875]	Loss: 0.6640 (0.3549 on avg)
+Epoch: [6/10][ 400/1875]	Loss: 0.2900 (0.3609 on avg)
+Epoch: [6/10][ 500/1875]	Loss: 0.2029 (0.3533 on avg)
+Epoch: [6/10][ 600/1875]	Loss: 0.4276 (0.3515 on avg)
+Epoch: [6/10][ 700/1875]	Loss: 0.2570 (0.3494 on avg)
+Epoch: [6/10][ 800/1875]	Loss: 0.3928 (0.3471 on avg)
+Epoch: [6/10][ 900/1875]	Loss: 0.1549 (0.3462 on avg)
+Epoch: [6/10][1000/1875]	Loss: 0.2663 (0.3443 on avg)
+Epoch: [6/10][1100/1875]	Loss: 0.2487 (0.3430 on avg)
+Epoch: [6/10][1200/1875]	Loss: 0.3322 (0.3409 on avg)
+Epoch: [6/10][1300/1875]	Loss: 0.4123 (0.3392 on avg)
+Epoch: [6/10][1400/1875]	Loss: 0.1606 (0.3368 on avg)
+Epoch: [6/10][1500/1875]	Loss: 0.1309 (0.3348 on avg)
+Epoch: [6/10][1600/1875]	Loss: 0.3000 (0.3341 on avg)
+Epoch: [6/10][1700/1875]	Loss: 0.4214 (0.3340 on avg)
+Epoch: [6/10][1800/1875]	Loss: 0.2798 (0.3332 on avg)
+
+* Epoch: [6/10]	Train loss: 0.332
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [6/10][   0/313]	Loss: 0.3278 (0.3278 on avg)	Top-1 err: 6.2500 (6.2500 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [6/10][ 100/313]	Loss: 0.4537 (0.3020 on avg)	Top-1 err: 12.5000 (9.1584 on avg)	Top-5 err: 3.1250 (0.1856 on avg)
+Test (on val set): [6/10][ 200/313]	Loss: 0.3555 (0.2997 on avg)	Top-1 err: 12.5000 (8.6598 on avg)	Top-5 err: 0.0000 (0.2643 on avg)
+Test (on val set): [6/10][ 300/313]	Loss: 0.2052 (0.2983 on avg)	Top-1 err: 6.2500 (8.5341 on avg)	Top-5 err: 0.0000 (0.2596 on avg)
+
+* Epoch: [6/10]	Test loss: 0.297	Top-1 err: 8.470	Top-5 err: 0.250
+
+              precision    recall  f1-score   support
+
+           0       0.95      0.98      0.97       980
+           1       0.98      0.97      0.98      1135
+           2       0.93      0.91      0.92      1032
+           3       0.91      0.90      0.91      1010
+           4       0.88      0.91      0.90       982
+           5       0.89      0.86      0.87       892
+           6       0.95      0.95      0.95       958
+           7       0.91      0.92      0.92      1028
+           8       0.87      0.88      0.87       974
+           9       0.87      0.87      0.87      1009
+
+    accuracy                           0.92     10000
+   macro avg       0.91      0.91      0.91     10000
+weighted avg       0.92      0.92      0.92     10000
+
+Current best error rate (top-1 and top-5 error): 8.47 0.25 
+
+Epoch: [7/10][   0/1875]	Loss: 0.2902 (0.2902 on avg)
+Epoch: [7/10][ 100/1875]	Loss: 0.1066 (0.2827 on avg)
+Epoch: [7/10][ 200/1875]	Loss: 0.3193 (0.3052 on avg)
+Epoch: [7/10][ 300/1875]	Loss: 0.3495 (0.3053 on avg)
+Epoch: [7/10][ 400/1875]	Loss: 0.5327 (0.3023 on avg)
+Epoch: [7/10][ 500/1875]	Loss: 0.2843 (0.2962 on avg)
+Epoch: [7/10][ 600/1875]	Loss: 0.4487 (0.2953 on avg)
+Epoch: [7/10][ 700/1875]	Loss: 0.3671 (0.2951 on avg)
+Epoch: [7/10][ 800/1875]	Loss: 0.2926 (0.2933 on avg)
+Epoch: [7/10][ 900/1875]	Loss: 0.3012 (0.2909 on avg)
+Epoch: [7/10][1000/1875]	Loss: 0.2339 (0.2892 on avg)
+Epoch: [7/10][1100/1875]	Loss: 0.2531 (0.2872 on avg)
+Epoch: [7/10][1200/1875]	Loss: 0.1691 (0.2883 on avg)
+Epoch: [7/10][1300/1875]	Loss: 0.6119 (0.2891 on avg)
+Epoch: [7/10][1400/1875]	Loss: 0.2031 (0.2881 on avg)
+Epoch: [7/10][1500/1875]	Loss: 0.3462 (0.2872 on avg)
+Epoch: [7/10][1600/1875]	Loss: 0.3307 (0.2865 on avg)
+Epoch: [7/10][1700/1875]	Loss: 0.3064 (0.2857 on avg)
+Epoch: [7/10][1800/1875]	Loss: 0.5674 (0.2852 on avg)
+
+* Epoch: [7/10]	Train loss: 0.285
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [7/10][   0/313]	Loss: 0.1000 (0.1000 on avg)	Top-1 err: 0.0000 (0.0000 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [7/10][ 100/313]	Loss: 0.3181 (0.2570 on avg)	Top-1 err: 12.5000 (7.5495 on avg)	Top-5 err: 0.0000 (0.1856 on avg)
+Test (on val set): [7/10][ 200/313]	Loss: 0.2604 (0.2527 on avg)	Top-1 err: 3.1250 (7.2606 on avg)	Top-5 err: 0.0000 (0.2488 on avg)
+Test (on val set): [7/10][ 300/313]	Loss: 0.3150 (0.2584 on avg)	Top-1 err: 9.3750 (7.6204 on avg)	Top-5 err: 0.0000 (0.2076 on avg)
+
+* Epoch: [7/10]	Test loss: 0.258	Top-1 err: 7.570	Top-5 err: 0.200
+
+              precision    recall  f1-score   support
+
+           0       0.95      0.98      0.96       980
+           1       0.98      0.98      0.98      1135
+           2       0.93      0.91      0.92      1032
+           3       0.90      0.92      0.91      1010
+           4       0.91      0.92      0.91       982
+           5       0.90      0.89      0.89       892
+           6       0.96      0.95      0.95       958
+           7       0.93      0.92      0.93      1028
+           8       0.90      0.88      0.89       974
+           9       0.89      0.88      0.89      1009
+
+    accuracy                           0.92     10000
+   macro avg       0.92      0.92      0.92     10000
+weighted avg       0.92      0.92      0.92     10000
+
+Current best error rate (top-1 and top-5 error): 7.57 0.2 
+
+Epoch: [8/10][   0/1875]	Loss: 0.4810 (0.4810 on avg)
+Epoch: [8/10][ 100/1875]	Loss: 0.2075 (0.2703 on avg)
+Epoch: [8/10][ 200/1875]	Loss: 0.1358 (0.2667 on avg)
+Epoch: [8/10][ 300/1875]	Loss: 0.1388 (0.2640 on avg)
+Epoch: [8/10][ 400/1875]	Loss: 0.4817 (0.2645 on avg)
+Epoch: [8/10][ 500/1875]	Loss: 0.1282 (0.2620 on avg)
+Epoch: [8/10][ 600/1875]	Loss: 0.1693 (0.2616 on avg)
+Epoch: [8/10][ 700/1875]	Loss: 0.1511 (0.2609 on avg)
+Epoch: [8/10][ 800/1875]	Loss: 0.2273 (0.2602 on avg)
+Epoch: [8/10][ 900/1875]	Loss: 0.3292 (0.2596 on avg)
+Epoch: [8/10][1000/1875]	Loss: 0.2392 (0.2597 on avg)
+Epoch: [8/10][1100/1875]	Loss: 0.1831 (0.2592 on avg)
+Epoch: [8/10][1200/1875]	Loss: 0.1835 (0.2587 on avg)
+Epoch: [8/10][1300/1875]	Loss: 0.2571 (0.2568 on avg)
+Epoch: [8/10][1400/1875]	Loss: 0.3199 (0.2558 on avg)
+Epoch: [8/10][1500/1875]	Loss: 0.4086 (0.2548 on avg)
+Epoch: [8/10][1600/1875]	Loss: 0.1821 (0.2538 on avg)
+Epoch: [8/10][1700/1875]	Loss: 0.2890 (0.2532 on avg)
+Epoch: [8/10][1800/1875]	Loss: 0.2377 (0.2523 on avg)
+
+* Epoch: [8/10]	Train loss: 0.251
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [8/10][   0/313]	Loss: 0.2234 (0.2234 on avg)	Top-1 err: 6.2500 (6.2500 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [8/10][ 100/313]	Loss: 0.2620 (0.2448 on avg)	Top-1 err: 9.3750 (7.4876 on avg)	Top-5 err: 0.0000 (0.1547 on avg)
+Test (on val set): [8/10][ 200/313]	Loss: 0.1155 (0.2408 on avg)	Top-1 err: 3.1250 (7.4471 on avg)	Top-5 err: 0.0000 (0.1710 on avg)
+Test (on val set): [8/10][ 300/313]	Loss: 0.1009 (0.2315 on avg)	Top-1 err: 3.1250 (6.9767 on avg)	Top-5 err: 0.0000 (0.1869 on avg)
+
+* Epoch: [8/10]	Test loss: 0.230	Top-1 err: 6.950	Top-5 err: 0.180
+
+              precision    recall  f1-score   support
+
+           0       0.95      0.98      0.97       980
+           1       0.97      0.98      0.98      1135
+           2       0.94      0.92      0.93      1032
+           3       0.91      0.92      0.92      1010
+           4       0.92      0.91      0.92       982
+           5       0.94      0.88      0.91       892
+           6       0.96      0.96      0.96       958
+           7       0.93      0.93      0.93      1028
+           8       0.89      0.91      0.90       974
+           9       0.88      0.90      0.89      1009
+
+    accuracy                           0.93     10000
+   macro avg       0.93      0.93      0.93     10000
+weighted avg       0.93      0.93      0.93     10000
+
+Current best error rate (top-1 and top-5 error): 6.95 0.18 
+
+Epoch: [9/10][   0/1875]	Loss: 0.1412 (0.1412 on avg)
+Epoch: [9/10][ 100/1875]	Loss: 0.2370 (0.2224 on avg)
+Epoch: [9/10][ 200/1875]	Loss: 0.0837 (0.2375 on avg)
+Epoch: [9/10][ 300/1875]	Loss: 0.3413 (0.2308 on avg)
+Epoch: [9/10][ 400/1875]	Loss: 0.2863 (0.2308 on avg)
+Epoch: [9/10][ 500/1875]	Loss: 0.0492 (0.2305 on avg)
+Epoch: [9/10][ 600/1875]	Loss: 0.3798 (0.2320 on avg)
+Epoch: [9/10][ 700/1875]	Loss: 0.6097 (0.2318 on avg)
+Epoch: [9/10][ 800/1875]	Loss: 0.2170 (0.2304 on avg)
+Epoch: [9/10][ 900/1875]	Loss: 0.2136 (0.2340 on avg)
+Epoch: [9/10][1000/1875]	Loss: 0.3331 (0.2320 on avg)
+Epoch: [9/10][1100/1875]	Loss: 0.2081 (0.2329 on avg)
+Epoch: [9/10][1200/1875]	Loss: 0.1709 (0.2332 on avg)
+Epoch: [9/10][1300/1875]	Loss: 0.3762 (0.2302 on avg)
+Epoch: [9/10][1400/1875]	Loss: 0.2048 (0.2300 on avg)
+Epoch: [9/10][1500/1875]	Loss: 0.0686 (0.2289 on avg)
+Epoch: [9/10][1600/1875]	Loss: 0.1014 (0.2283 on avg)
+Epoch: [9/10][1700/1875]	Loss: 0.1072 (0.2278 on avg)
+Epoch: [9/10][1800/1875]	Loss: 0.3237 (0.2258 on avg)
+
+* Epoch: [9/10]	Train loss: 0.226
+
+Criterion: CrossEntropyLoss(), average time: 0.003 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [9/10][   0/313]	Loss: 0.3459 (0.3459 on avg)	Top-1 err: 18.7500 (18.7500 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [9/10][ 100/313]	Loss: 0.1549 (0.2233 on avg)	Top-1 err: 6.2500 (6.6522 on avg)	Top-5 err: 0.0000 (0.3094 on avg)
+Test (on val set): [9/10][ 200/313]	Loss: 0.1285 (0.2185 on avg)	Top-1 err: 3.1250 (6.6231 on avg)	Top-5 err: 0.0000 (0.1866 on avg)
+Test (on val set): [9/10][ 300/313]	Loss: 0.2309 (0.2093 on avg)	Top-1 err: 6.2500 (6.3331 on avg)	Top-5 err: 0.0000 (0.1765 on avg)
+
+* Epoch: [9/10]	Test loss: 0.208	Top-1 err: 6.270	Top-5 err: 0.170
+
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97       980
+           1       0.97      0.98      0.98      1135
+           2       0.95      0.92      0.93      1032
+           3       0.91      0.93      0.92      1010
+           4       0.94      0.92      0.93       982
+           5       0.94      0.91      0.93       892
+           6       0.96      0.96      0.96       958
+           7       0.94      0.93      0.93      1028
+           8       0.91      0.91      0.91       974
+           9       0.91      0.90      0.91      1009
+
+    accuracy                           0.94     10000
+   macro avg       0.94      0.94      0.94     10000
+weighted avg       0.94      0.94      0.94     10000
+
+Current best error rate (top-1 and top-5 error): 6.27 0.17 
+
+Epoch: [10/10][   0/1875]	Loss: 0.2828 (0.2828 on avg)
+Epoch: [10/10][ 100/1875]	Loss: 0.2022 (0.2115 on avg)
+Epoch: [10/10][ 200/1875]	Loss: 0.3591 (0.2039 on avg)
+Epoch: [10/10][ 300/1875]	Loss: 0.1998 (0.2117 on avg)
+Epoch: [10/10][ 400/1875]	Loss: 0.3955 (0.2143 on avg)
+Epoch: [10/10][ 500/1875]	Loss: 0.1025 (0.2143 on avg)
+Epoch: [10/10][ 600/1875]	Loss: 0.1653 (0.2124 on avg)
+Epoch: [10/10][ 700/1875]	Loss: 0.2102 (0.2141 on avg)
+Epoch: [10/10][ 800/1875]	Loss: 0.2975 (0.2110 on avg)
+Epoch: [10/10][ 900/1875]	Loss: 0.0906 (0.2117 on avg)
+Epoch: [10/10][1000/1875]	Loss: 0.4245 (0.2108 on avg)
+Epoch: [10/10][1100/1875]	Loss: 0.3053 (0.2092 on avg)
+Epoch: [10/10][1200/1875]	Loss: 0.0790 (0.2088 on avg)
+Epoch: [10/10][1300/1875]	Loss: 0.2255 (0.2077 on avg)
+Epoch: [10/10][1400/1875]	Loss: 0.1772 (0.2076 on avg)
+Epoch: [10/10][1500/1875]	Loss: 0.1687 (0.2076 on avg)
+Epoch: [10/10][1600/1875]	Loss: 0.1099 (0.2074 on avg)
+Epoch: [10/10][1700/1875]	Loss: 0.0814 (0.2061 on avg)
+Epoch: [10/10][1800/1875]	Loss: 0.1270 (0.2062 on avg)
+
+* Epoch: [10/10]	Train loss: 0.205
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+Test (on val set): [10/10][   0/313]	Loss: 0.2315 (0.2315 on avg)	Top-1 err: 3.1250 (3.1250 on avg)	Top-5 err: 0.0000 (0.0000 on avg)
+Test (on val set): [10/10][ 100/313]	Loss: 0.1671 (0.1855 on avg)	Top-1 err: 6.2500 (5.7859 on avg)	Top-5 err: 0.0000 (0.1238 on avg)
+Test (on val set): [10/10][ 200/313]	Loss: 0.0397 (0.1862 on avg)	Top-1 err: 0.0000 (5.7991 on avg)	Top-5 err: 0.0000 (0.1399 on avg)
+Test (on val set): [10/10][ 300/313]	Loss: 0.2833 (0.1900 on avg)	Top-1 err: 9.3750 (5.9178 on avg)	Top-5 err: 0.0000 (0.1246 on avg)
+
+* Epoch: [10/10]	Test loss: 0.189	Top-1 err: 5.900	Top-5 err: 0.120
+
+              precision    recall  f1-score   support
+
+           0       0.96      0.98      0.97       980
+           1       0.98      0.98      0.98      1135
+           2       0.93      0.94      0.94      1032
+           3       0.92      0.93      0.93      1010
+           4       0.95      0.91      0.93       982
+           5       0.94      0.92      0.93       892
+           6       0.96      0.97      0.96       958
+           7       0.94      0.93      0.94      1028
+           8       0.92      0.92      0.92       974
+           9       0.91      0.91      0.91      1009
+
+    accuracy                           0.94     10000
+   macro avg       0.94      0.94      0.94     10000
+weighted avg       0.94      0.94      0.94     10000
+
+Current best error rate (top-1 and top-5 error): 5.9 0.12 
+
+Best error rate (top-1 and top-5 error): 5.9 0.12
+
+criterion: ce
+optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0001
+    maximize: False
+    weight_decay: 0
+) lr: 0.0001
+batch_size: 32
+epochs: 10
+total time: 243.872 seconds
