@@ -3,7 +3,7 @@ import torch.nn as nn
 from model import LeNet
 
 class CrossEntropyWithGradientPenalty(nn.Module):
-    def __init__(self, model, alpha_schedule):
+    def __init__(self, model, alpha_schedule, bad_concept_labels = None):
         """
         Initializes the custom loss function.
         
@@ -15,7 +15,24 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         self.model = model
         self.alpha_schedule = alpha_schedule
         self.alpha_index = -1
+        if bad_concept_labels is not None:
+            self.bad_concept_labels = bad_concept_labels
+        else:
+            self.bad_concept_labels = torch.tensor([])
         self.cross_entropy = nn.CrossEntropyLoss()
+        
+    def good_bad_split(self, outputs, targets):
+        
+        bad_indices = torch.isin(targets, self.bad_concept_labels)
+        good_indices = torch.logical_not(bad_indices)
+        
+        bad_targets = targets[bad_indices]
+        good_targets = targets[good_indices]
+        
+        bad_outputs = outputs[bad_indices]
+        good_outputs = outputs[good_indices]
+        
+        return good_outputs, good_targets, bad_outputs, bad_targets
 
     def forward(self, outputs, targets):
         """
@@ -28,21 +45,25 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         Returns:
         - loss: The combined loss value.
         """
-        # Standard cross-entropy loss
-        ce_loss = self.cross_entropy(outputs, targets)
         
-        # Compute gradients of the loss with respect to the model parameters
-        grads = torch.autograd.grad(
-            ce_loss, self.model.parameters(), create_graph=True
+        good_outputs, good_targets, bad_outputs, bad_targets = self.good_bad_split(outputs, targets)
+        
+        # standard cross-entropy loss
+        good_ce_loss = self.cross_entropy(good_outputs, good_targets)
+        bad_ce_loss = self.cross_entropy(bad_outputs, bad_targets)
+        
+        # get gradients just for bad outputs
+        bad_grads = torch.autograd.grad(
+            bad_ce_loss, self.model.parameters(), create_graph=True
         )
         
-        # Compute the norm of the gradients
-        grad_norm = sum(
-            torch.norm(g)**2 for g in grads if g is not None
+        # Compute the norm of the bad gradients
+        bad_grad_norm = sum(
+            torch.norm(g)**2 for g in bad_grads if g is not None
         )
         
-        # Combined loss: cross-entropy loss + alpha * gradient penalty
-        loss = ce_loss + self.alpha * grad_norm
+        # Combined loss: cross entropy on good outputs - cross entropy on bad outputs + alpha * gradient norm
+        loss = good_ce_loss - bad_ce_loss + self.alpha * bad_grad_norm
         
         return loss
     

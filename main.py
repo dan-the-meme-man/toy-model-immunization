@@ -1,4 +1,3 @@
-import os
 import argparse
 from time import time
 import torch
@@ -12,6 +11,8 @@ from loss import CrossEntropyWithGradientPenalty
 from model import LeNet
 from train import train, validate
 
+torch.manual_seed(42)
+
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--criterion', '-c', type=str, default='ce')
@@ -22,7 +23,7 @@ m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
 alpha_schedule = [0, 0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1]
 if args.criterion == 'gp':
-    criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule)
+    criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule, bad_concept_labels=torch.tensor([0, 1]))
 elif args.criterion == 'ce':
     criterion = CrossEntropyLoss()
 else:
@@ -49,24 +50,19 @@ full_train_dataset = MNIST(
     download=True,
     transform=mnist_transform
 )
+shuffled_train_indices = torch.randperm(len(full_train_dataset))
+train_dataset = Subset(full_train_dataset, shuffled_train_indices[:50000])
+ft_dataset = Subset(full_train_dataset, shuffled_train_indices[50000:])
 
-holdout_classes = (0, 1)
-holdout_indices = [
-    i for i, target in enumerate(full_train_dataset.targets) if target in holdout_classes
-]
-train_indices = [
-    i for i in range(len(full_train_dataset)) if i not in holdout_indices
-]
-
-train_dataset = Subset(full_train_dataset, train_indices)
-ft_dataset = Subset(full_train_dataset, holdout_indices)
-
-val_dataset = MNIST(
+full_val_dataset = MNIST(
     root='./data',
     train=False,
     download=True,
     transform=mnist_transform
 )
+shuffled_val_indices = torch.randperm(len(full_val_dataset))
+val_dataset = Subset(full_val_dataset, shuffled_val_indices[:len(full_val_dataset) // 2])
+test_dataset = Subset(full_val_dataset, shuffled_val_indices[len(full_val_dataset) // 2:])
 
 train_loader = DataLoader(
     train_dataset,
@@ -83,6 +79,13 @@ ft_loader = DataLoader(
 
 val_loader = DataLoader(
     val_dataset,
+    batch_size=batch_size,
+    shuffle=True,
+    num_workers=4
+)
+
+test_loader = DataLoader(
+    test_dataset,
     batch_size=batch_size,
     shuffle=True,
     num_workers=4
