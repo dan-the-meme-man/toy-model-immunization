@@ -11,20 +11,16 @@ python3 main.py -c [ce|gp]
 
 ## Results
 
-See the log files ce.o1194 and gp.o1993. Both models can learn approximately equally well. I use a scheduler to slowly increase the gradient norm penalty. If this is not done, the model will learn more slowly.
+See log file gp.o1527. This used the following loss calculation:
 
-An earlier experiment with a constant `alpha=0.1` took twice as many epochs to converge to the same accuracy as the ordinary cross entropy loss.
+```python
+loss = good_ce_loss + self.alpha * (bad_grad_norm - bad_ce_loss)
+```
 
-`alpha_schedule` in `main.py` can be adjusted to change how the penalty is increased over the epochs.
+with:
 
-## Predictions and future work
+```python
+alpha_schedule = [0, 0, 0, 0, 0, 0, 0.125, 0.25, 0.5, 1]
+```
 
-It remains to be seen whether the toy model can be easily fine-tuned, and whether the gradient norm penalty is effective.
 
-There will almost certainly be a trade-off between the amount of training needed to converge and the extent to which the model is immunized.
-
-A stronger gradient penalty reduces the magnitude of the gradient updates during training, so it's probably best to introduce the penalty slowly.
-
-Another option is to train on the joint objective only after a certain amount of training on the ordinary objective.
-
-I have tried to find a balance between the two in this experiment.

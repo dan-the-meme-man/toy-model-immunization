@@ -21,14 +21,18 @@ args = parser.parse_args()
 
 m = LeNet().to('cuda' if torch.cuda.is_available() else 'cpu')
 
-alpha_schedule = [0, 0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1]
+alpha_schedule = [0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1, 0.1]
 if args.criterion == 'gp':
-    criterion = CrossEntropyWithGradientPenalty(m, alpha_schedule=alpha_schedule, bad_concept_labels=torch.tensor([0, 1]))
+    criterion = CrossEntropyWithGradientPenalty(
+        m,
+        alpha_schedule=alpha_schedule,
+        bad_concept_labels=torch.tensor([0, 1])
+    )
 elif args.criterion == 'ce':
     criterion = CrossEntropyLoss()
 else:
     raise ValueError(f'Invalid criterion: {args.criterion}. Options are "ce" and "gp".')
-optimizer = optim.Adam(m.parameters(), lr=1e-4)
+optimizer = optim.Adam(m.parameters(), lr=1e-3)
 batch_size = 32
 epochs = len(alpha_schedule)
 

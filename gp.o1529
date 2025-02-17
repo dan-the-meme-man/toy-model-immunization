@@ -1,0 +1,1106 @@
+Sun Feb  9 00:50:10 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA L4                      On  | 00000000:00:03.0 Off |                    0 |
+| N/A   56C    P8              14W /  72W |      4MiB / 23034MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+criterion: gp
+alpha schedule: [0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1, 0.1]
+optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0
+) lr: 0.001
+batch_size: 32
+epochs: 10
+Epoch: [1/10][   0/1563]	Loss: 2.3560 (2.3560 on avg)
+Epoch: [1/10][ 100/1563]	Loss: 2.0547 (2.1248 on avg)
+Epoch: [1/10][ 200/1563]	Loss: 2.1399 (2.1079 on avg)
+Epoch: [1/10][ 300/1563]	Loss: 1.9762 (2.0959 on avg)
+Epoch: [1/10][ 400/1563]	Loss: 1.1509 (1.9491 on avg)
+Epoch: [1/10][ 500/1563]	Loss: 0.6363 (1.7426 on avg)
+Epoch: [1/10][ 600/1563]	Loss: 0.5144 (1.5609 on avg)
+Epoch: [1/10][ 700/1563]	Loss: 0.5715 (nan on avg)
+Epoch: [1/10][ 800/1563]	Loss: 0.2905 (nan on avg)
+Epoch: [1/10][ 900/1563]	Loss: 0.4146 (nan on avg)
+Epoch: [1/10][1000/1563]	Loss: 0.1977 (nan on avg)
+Epoch: [1/10][1100/1563]	Loss: 0.2543 (nan on avg)
+Epoch: [1/10][1200/1563]	Loss: 0.4059 (nan on avg)
+Epoch: [1/10][1300/1563]	Loss: 0.2008 (nan on avg)
+Epoch: [1/10][1400/1563]	Loss: 0.1283 (nan on avg)
+Epoch: [1/10][1500/1563]	Loss: 0.1323 (nan on avg)
+
+* Epoch: [1/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.017 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [1/10][   0/157]	Loss: 0.1291 (0.1291 on avg)	Top-1 err: 12.5000 (12.5000 on avg)	Top-5 err: 9.3750 (9.3750 on avg)
+Test (on val set): [1/10][ 100/157]	Loss: 0.2523 (0.1843 on avg)	Top-1 err: 31.2500 (24.7834 on avg)	Top-5 err: 21.8750 (20.6683 on avg)
+
+* Epoch: [1/10]	Test loss: nan	Top-1 err: 25.620	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.75      0.95      0.84       530
+           3       0.75      0.95      0.84       482
+           4       0.94      0.95      0.94       508
+           5       0.55      0.92      0.69       438
+           6       0.85      0.97      0.91       473
+           7       0.88      0.94      0.91       529
+           8       0.52      0.94      0.67       466
+           9       0.93      0.91      0.92       514
+
+    accuracy                           0.74      5000
+   macro avg       0.62      0.76      0.67      5000
+weighted avg       0.61      0.74      0.67      5000
+
+Current best error rate (top-1 and top-5 error): 25.62 21.26 
+
+Epoch: [2/10][   0/1563]	Loss: 0.0591 (0.0591 on avg)
+Epoch: [2/10][ 100/1563]	Loss: 0.3682 (0.1959 on avg)
+Epoch: [2/10][ 200/1563]	Loss: 0.1144 (0.1893 on avg)
+Epoch: [2/10][ 300/1563]	Loss: 0.2741 (nan on avg)
+Epoch: [2/10][ 400/1563]	Loss: 0.1703 (nan on avg)
+Epoch: [2/10][ 500/1563]	Loss: 0.0491 (nan on avg)
+Epoch: [2/10][ 600/1563]	Loss: 0.1423 (nan on avg)
+Epoch: [2/10][ 700/1563]	Loss: 0.0247 (nan on avg)
+Epoch: [2/10][ 800/1563]	Loss: 0.2568 (nan on avg)
+Epoch: [2/10][ 900/1563]	Loss: 0.2203 (nan on avg)
+Epoch: [2/10][1000/1563]	Loss: 0.1313 (nan on avg)
+Epoch: [2/10][1100/1563]	Loss: 0.1113 (nan on avg)
+Epoch: [2/10][1200/1563]	Loss: 0.0493 (nan on avg)
+Epoch: [2/10][1300/1563]	Loss: 0.0886 (nan on avg)
+Epoch: [2/10][1400/1563]	Loss: 0.2554 (nan on avg)
+Epoch: [2/10][1500/1563]	Loss: 0.0254 (nan on avg)
+
+* Epoch: [2/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [2/10][   0/157]	Loss: 0.1855 (0.1855 on avg)	Top-1 err: 28.1250 (28.1250 on avg)	Top-5 err: 25.0000 (25.0000 on avg)
+Test (on val set): [2/10][ 100/157]	Loss: 0.0904 (0.1086 on avg)	Top-1 err: 15.6250 (23.5767 on avg)	Top-5 err: 9.3750 (21.0705 on avg)
+
+* Epoch: [2/10]	Test loss: 0.104	Top-1 err: 23.680	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.89      0.97      0.93       530
+           3       0.94      0.95      0.94       482
+           4       0.82      0.98      0.89       508
+           5       0.63      0.97      0.77       438
+           6       0.71      0.99      0.83       473
+           7       0.96      0.96      0.96       529
+           8       0.50      0.97      0.66       466
+           9       0.89      0.96      0.92       514
+
+    accuracy                           0.76      5000
+   macro avg       0.63      0.77      0.69      5000
+weighted avg       0.63      0.76      0.68      5000
+
+Current best error rate (top-1 and top-5 error): 23.68 21.22 
+
+Epoch: [3/10][   0/1563]	Loss: 0.2186 (0.2186 on avg)
+Epoch: [3/10][ 100/1563]	Loss: 0.1440 (0.1253 on avg)
+Epoch: [3/10][ 200/1563]	Loss: 0.1723 (0.1190 on avg)
+Epoch: [3/10][ 300/1563]	Loss: 0.0629 (0.1129 on avg)
+Epoch: [3/10][ 400/1563]	Loss: 0.0887 (0.1118 on avg)
+Epoch: [3/10][ 500/1563]	Loss: 0.0471 (0.1080 on avg)
+Epoch: [3/10][ 600/1563]	Loss: 0.0216 (0.1069 on avg)
+Epoch: [3/10][ 700/1563]	Loss: 0.0171 (0.1066 on avg)
+Epoch: [3/10][ 800/1563]	Loss: 0.0215 (0.1063 on avg)
+Epoch: [3/10][ 900/1563]	Loss: 0.0558 (0.1062 on avg)
+Epoch: [3/10][1000/1563]	Loss: 0.0210 (0.1047 on avg)
+Epoch: [3/10][1100/1563]	Loss: 0.1812 (0.1030 on avg)
+Epoch: [3/10][1200/1563]	Loss: 0.3893 (0.1022 on avg)
+Epoch: [3/10][1300/1563]	Loss: 0.0193 (0.1019 on avg)
+Epoch: [3/10][1400/1563]	Loss: 0.1436 (0.1017 on avg)
+Epoch: [3/10][1500/1563]	Loss: 0.0064 (0.1012 on avg)
+
+* Epoch: [3/10]	Train loss: 0.100
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [3/10][   0/157]	Loss: 0.0423 (0.0423 on avg)	Top-1 err: 34.3750 (34.3750 on avg)	Top-5 err: 34.3750 (34.3750 on avg)
+Test (on val set): [3/10][ 100/157]	Loss: 0.0127 (0.0789 on avg)	Top-1 err: 21.8750 (23.4530 on avg)	Top-5 err: 21.8750 (21.4109 on avg)
+
+* Epoch: [3/10]	Test loss: nan	Top-1 err: 23.260	Top-5 err: 21.200
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.89      0.98      0.93       530
+           3       0.95      0.97      0.96       482
+           4       0.94      0.97      0.96       508
+           5       0.76      0.96      0.84       438
+           6       0.67      0.99      0.80       473
+           7       0.98      0.96      0.97       529
+           8       0.42      0.99      0.59       466
+           9       0.91      0.97      0.94       514
+
+    accuracy                           0.77      5000
+   macro avg       0.65      0.78      0.70      5000
+weighted avg       0.65      0.77      0.69      5000
+
+Current best error rate (top-1 and top-5 error): 23.26 21.2 
+
+Epoch: [4/10][   0/1563]	Loss: 1.0688 (1.0688 on avg)
+Epoch: [4/10][ 100/1563]	Loss: 0.3351 (0.4064 on avg)
+Epoch: [4/10][ 200/1563]	Loss: 0.0633 (0.2658 on avg)
+Epoch: [4/10][ 300/1563]	Loss: 0.2297 (0.2049 on avg)
+Epoch: [4/10][ 400/1563]	Loss: -0.0784 (0.1600 on avg)
+Epoch: [4/10][ 500/1563]	Loss: 0.0984 (0.1292 on avg)
+Epoch: [4/10][ 600/1563]	Loss: 0.0445 (0.1068 on avg)
+Epoch: [4/10][ 700/1563]	Loss: -0.0987 (0.0850 on avg)
+Epoch: [4/10][ 800/1563]	Loss: -0.0910 (0.0643 on avg)
+Epoch: [4/10][ 900/1563]	Loss: -0.1662 (0.0453 on avg)
+Epoch: [4/10][1000/1563]	Loss: -0.2151 (0.0271 on avg)
+Epoch: [4/10][1100/1563]	Loss: -0.2231 (0.0117 on avg)
+Epoch: [4/10][1200/1563]	Loss: -0.2472 (-0.0039 on avg)
+Epoch: [4/10][1300/1563]	Loss: -0.3046 (-0.0173 on avg)
+Epoch: [4/10][1400/1563]	Loss: -0.3059 (-0.0316 on avg)
+Epoch: [4/10][1500/1563]	Loss: -0.2804 (-0.0449 on avg)
+
+* Epoch: [4/10]	Train loss: -0.054
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [4/10][   0/157]	Loss: -0.2740 (-0.2740 on avg)	Top-1 err: 25.0000 (25.0000 on avg)	Top-5 err: 25.0000 (25.0000 on avg)
+Test (on val set): [4/10][ 100/157]	Loss: -0.2288 (-0.2663 on avg)	Top-1 err: 37.5000 (22.6485 on avg)	Top-5 err: 34.3750 (20.5755 on avg)
+
+* Epoch: [4/10]	Test loss: nan	Top-1 err: 22.940	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.81      0.99      0.89       530
+           3       0.94      0.97      0.96       482
+           4       0.98      0.98      0.98       508
+           5       0.89      0.97      0.93       438
+           6       0.54      0.99      0.70       473
+           7       0.96      0.98      0.97       529
+           8       0.48      0.97      0.65       466
+           9       0.95      0.98      0.96       514
+
+    accuracy                           0.77      5000
+   macro avg       0.66      0.78      0.70      5000
+weighted avg       0.65      0.77      0.69      5000
+
+Current best error rate (top-1 and top-5 error): 22.94 21.22 
+
+Epoch: [5/10][   0/1563]	Loss: -0.6788 (-0.6788 on avg)
+Epoch: [5/10][ 100/1563]	Loss: -0.6986 (-0.6305 on avg)
+Epoch: [5/10][ 200/1563]	Loss: -0.8261 (-0.6657 on avg)
+Epoch: [5/10][ 300/1563]	Loss: -0.6575 (-0.6971 on avg)
+Epoch: [5/10][ 400/1563]	Loss: -0.9004 (-0.7303 on avg)
+Epoch: [5/10][ 500/1563]	Loss: -0.9917 (-0.7584 on avg)
+Epoch: [5/10][ 600/1563]	Loss: -1.0137 (-0.7856 on avg)
+Epoch: [5/10][ 700/1563]	Loss: -0.9032 (-0.8115 on avg)
+Epoch: [5/10][ 800/1563]	Loss: -1.1223 (-0.8391 on avg)
+Epoch: [5/10][ 900/1563]	Loss: -0.8240 (-0.8620 on avg)
+Epoch: [5/10][1000/1563]	Loss: -1.0475 (-0.8859 on avg)
+Epoch: [5/10][1100/1563]	Loss: -1.2917 (-0.9094 on avg)
+Epoch: [5/10][1200/1563]	Loss: -1.2406 (-0.9332 on avg)
+Epoch: [5/10][1300/1563]	Loss: -1.3157 (-0.9568 on avg)
+Epoch: [5/10][1400/1563]	Loss: -1.3437 (-0.9814 on avg)
+Epoch: [5/10][1500/1563]	Loss: -1.2545 (-1.0051 on avg)
+
+* Epoch: [5/10]	Train loss: -1.016
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [5/10][   0/157]	Loss: -1.4589 (-1.4589 on avg)	Top-1 err: 25.0000 (25.0000 on avg)	Top-5 err: 25.0000 (25.0000 on avg)
+Test (on val set): [5/10][ 100/157]	Loss: -1.3882 (-1.3734 on avg)	Top-1 err: 12.5000 (22.6795 on avg)	Top-5 err: 12.5000 (21.1943 on avg)
+
+* Epoch: [5/10]	Test loss: -1.363	Top-1 err: 22.840	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.96      0.98      0.97       530
+           3       0.70      0.97      0.81       482
+           4       0.99      0.97      0.98       508
+           5       0.67      0.98      0.79       438
+           6       0.62      0.99      0.77       473
+           7       0.79      0.99      0.88       529
+           8       0.63      0.98      0.77       466
+           9       0.97      0.98      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.63      0.78      0.69      5000
+weighted avg       0.63      0.77      0.69      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Epoch: [6/10][   0/1563]	Loss: -2.1885 (-2.1885 on avg)
+Epoch: [6/10][ 100/1563]	Loss: -2.1717 (-2.1464 on avg)
+Epoch: [6/10][ 200/1563]	Loss: -2.2520 (-2.1980 on avg)
+Epoch: [6/10][ 300/1563]	Loss: -2.2765 (-2.2476 on avg)
+Epoch: [6/10][ 400/1563]	Loss: -2.5203 (-2.2984 on avg)
+Epoch: [6/10][ 500/1563]	Loss: -2.4794 (-2.3469 on avg)
+Epoch: [6/10][ 600/1563]	Loss: -1.9252 (-2.3883 on avg)
+Epoch: [6/10][ 700/1563]	Loss: -2.6716 (-2.4316 on avg)
+Epoch: [6/10][ 800/1563]	Loss: -2.8745 (-2.4639 on avg)
+Epoch: [6/10][ 900/1563]	Loss: -2.9768 (-2.5084 on avg)
+Epoch: [6/10][1000/1563]	Loss: -3.0902 (-2.5506 on avg)
+Epoch: [6/10][1100/1563]	Loss: -3.0674 (-2.5911 on avg)
+Epoch: [6/10][1200/1563]	Loss: -3.1003 (-2.6304 on avg)
+Epoch: [6/10][1300/1563]	Loss: -3.2870 (-2.6684 on avg)
+Epoch: [6/10][1400/1563]	Loss: -3.1344 (-2.7097 on avg)
+Epoch: [6/10][1500/1563]	Loss: -3.4783 (-2.7502 on avg)
+
+* Epoch: [6/10]	Train loss: -2.774
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [6/10][   0/157]	Loss: -3.5179 (-3.5179 on avg)	Top-1 err: 15.6250 (15.6250 on avg)	Top-5 err: 15.6250 (15.6250 on avg)
+Test (on val set): [6/10][ 100/157]	Loss: -3.4311 (-3.3779 on avg)	Top-1 err: 28.1250 (23.2673 on avg)	Top-5 err: 25.0000 (21.7512 on avg)
+
+* Epoch: [6/10]	Test loss: -3.378	Top-1 err: 22.980	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.92      0.98      0.95       482
+           4       1.00      0.96      0.98       508
+           5       0.94      0.97      0.95       438
+           6       0.50      0.99      0.66       473
+           7       0.98      0.98      0.98       529
+           8       0.45      0.98      0.62       466
+           9       0.95      0.97      0.96       514
+
+    accuracy                           0.77      5000
+   macro avg       0.67      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Epoch: [7/10][   0/1563]	Loss: -4.5758 (-4.5758 on avg)
+Epoch: [7/10][ 100/1563]	Loss: -4.8144 (-4.6129 on avg)
+Epoch: [7/10][ 200/1563]	Loss: -4.7428 (-4.6887 on avg)
+Epoch: [7/10][ 300/1563]	Loss: -4.9879 (-4.7437 on avg)
+Epoch: [7/10][ 400/1563]	Loss: -5.1735 (-4.8149 on avg)
+Epoch: [7/10][ 500/1563]	Loss: -5.1900 (-4.8742 on avg)
+Epoch: [7/10][ 600/1563]	Loss: -5.4667 (-4.9355 on avg)
+Epoch: [7/10][ 700/1563]	Loss: -5.4331 (-4.9931 on avg)
+Epoch: [7/10][ 800/1563]	Loss: -5.2459 (-5.0419 on avg)
+Epoch: [7/10][ 900/1563]	Loss: -5.5255 (-5.0992 on avg)
+Epoch: [7/10][1000/1563]	Loss: -5.8040 (nan on avg)
+Epoch: [7/10][1100/1563]	Loss: -5.5858 (nan on avg)
+Epoch: [7/10][1200/1563]	Loss: -6.0515 (nan on avg)
+Epoch: [7/10][1300/1563]	Loss: -5.9480 (nan on avg)
+Epoch: [7/10][1400/1563]	Loss: -6.2956 (nan on avg)
+Epoch: [7/10][1500/1563]	Loss: -6.3139 (nan on avg)
+
+* Epoch: [7/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [7/10][   0/157]	Loss: -6.3697 (-6.3697 on avg)	Top-1 err: 28.1250 (28.1250 on avg)	Top-5 err: 25.0000 (25.0000 on avg)
+Test (on val set): [7/10][ 100/157]	Loss: -6.0056 (-6.3133 on avg)	Top-1 err: 25.0000 (23.1126 on avg)	Top-5 err: 21.8750 (21.1634 on avg)
+
+* Epoch: [7/10]	Test loss: -6.316	Top-1 err: 23.320	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.97      0.98       530
+           3       0.77      0.97      0.86       482
+           4       1.00      0.96      0.98       508
+           5       0.94      0.98      0.96       438
+           6       0.49      1.00      0.65       473
+           7       0.91      0.98      0.94       529
+           8       0.52      0.96      0.67       466
+           9       0.95      0.97      0.96       514
+
+    accuracy                           0.77      5000
+   macro avg       0.66      0.78      0.70      5000
+weighted avg       0.65      0.77      0.69      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Epoch: [8/10][   0/1563]	Loss: -5.7949 (-5.7949 on avg)
+Epoch: [8/10][ 100/1563]	Loss: -6.1871 (-6.3996 on avg)
+Epoch: [8/10][ 200/1563]	Loss: -5.9515 (-6.4422 on avg)
+Epoch: [8/10][ 300/1563]	Loss: nan (nan on avg)
+Epoch: [8/10][ 400/1563]	Loss: -6.5490 (nan on avg)
+Epoch: [8/10][ 500/1563]	Loss: -6.6663 (nan on avg)
+Epoch: [8/10][ 600/1563]	Loss: -7.0991 (nan on avg)
+Epoch: [8/10][ 700/1563]	Loss: -6.5009 (nan on avg)
+Epoch: [8/10][ 800/1563]	Loss: -7.3316 (nan on avg)
+Epoch: [8/10][ 900/1563]	Loss: -6.6570 (nan on avg)
+Epoch: [8/10][1000/1563]	Loss: -7.5223 (nan on avg)
+Epoch: [8/10][1100/1563]	Loss: -7.6631 (nan on avg)
+Epoch: [8/10][1200/1563]	Loss: -7.6586 (nan on avg)
+Epoch: [8/10][1300/1563]	Loss: -7.4690 (nan on avg)
+Epoch: [8/10][1400/1563]	Loss: -6.9996 (nan on avg)
+Epoch: [8/10][1500/1563]	Loss: -7.6419 (nan on avg)
+
+* Epoch: [8/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [8/10][   0/157]	Loss: -7.9022 (-7.9022 on avg)	Top-1 err: 12.5000 (12.5000 on avg)	Top-5 err: 12.5000 (12.5000 on avg)
+Test (on val set): [8/10][ 100/157]	Loss: -8.0204 (-7.9384 on avg)	Top-1 err: 18.7500 (23.3601 on avg)	Top-5 err: 18.7500 (21.8131 on avg)
+
+* Epoch: [8/10]	Test loss: nan	Top-1 err: 22.860	Top-5 err: 21.240
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.96      0.98      0.97       482
+           4       0.99      0.98      0.99       508
+           5       0.99      0.96      0.97       438
+           6       0.49      0.99      0.65       473
+           7       0.96      1.00      0.98       529
+           8       0.44      0.98      0.61       466
+           9       0.99      0.96      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Epoch: [9/10][   0/1563]	Loss: -7.6241 (-7.6241 on avg)
+Epoch: [9/10][ 100/1563]	Loss: -8.1374 (-8.0198 on avg)
+Epoch: [9/10][ 200/1563]	Loss: -8.3289 (nan on avg)
+Epoch: [9/10][ 300/1563]	Loss: -8.4638 (nan on avg)
+Epoch: [9/10][ 400/1563]	Loss: -7.5654 (nan on avg)
+Epoch: [9/10][ 500/1563]	Loss: -8.6402 (nan on avg)
+Epoch: [9/10][ 600/1563]	Loss: -8.7987 (nan on avg)
+Epoch: [9/10][ 700/1563]	Loss: -8.8783 (nan on avg)
+Epoch: [9/10][ 800/1563]	Loss: -8.6925 (nan on avg)
+Epoch: [9/10][ 900/1563]	Loss: -8.8855 (nan on avg)
+Epoch: [9/10][1000/1563]	Loss: -8.7687 (nan on avg)
+Epoch: [9/10][1100/1563]	Loss: -8.5200 (nan on avg)
+Epoch: [9/10][1200/1563]	Loss: -9.4584 (nan on avg)
+Epoch: [9/10][1300/1563]	Loss: -9.3590 (nan on avg)
+Epoch: [9/10][1400/1563]	Loss: -9.3703 (nan on avg)
+Epoch: [9/10][1500/1563]	Loss: -9.5122 (nan on avg)
+
+* Epoch: [9/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [9/10][   0/157]	Loss: -9.3394 (-9.3394 on avg)	Top-1 err: 31.2500 (31.2500 on avg)	Top-5 err: 28.1250 (28.1250 on avg)
+Test (on val set): [9/10][ 100/157]	Loss: -9.5422 (-9.5985 on avg)	Top-1 err: 12.5000 (23.5458 on avg)	Top-5 err: 6.2500 (21.6584 on avg)
+
+* Epoch: [9/10]	Test loss: -9.604	Top-1 err: 22.920	Top-5 err: 21.200
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.99      0.98      0.98       530
+           3       0.96      0.98      0.97       482
+           4       0.99      0.98      0.99       508
+           5       0.99      0.98      0.98       438
+           6       0.48      0.99      0.65       473
+           7       0.98      0.98      0.98       529
+           8       0.44      0.98      0.60       466
+           9       0.97      0.97      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.68      0.77      0.71      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Epoch: [10/10][   0/1563]	Loss: -9.8751 (-9.8751 on avg)
+Epoch: [10/10][ 100/1563]	Loss: -9.9620 (-9.7069 on avg)
+Epoch: [10/10][ 200/1563]	Loss: -8.9814 (nan on avg)
+Epoch: [10/10][ 300/1563]	Loss: -9.9860 (nan on avg)
+Epoch: [10/10][ 400/1563]	Loss: -10.0438 (nan on avg)
+Epoch: [10/10][ 500/1563]	Loss: -9.9860 (nan on avg)
+Epoch: [10/10][ 600/1563]	Loss: -9.8100 (nan on avg)
+Epoch: [10/10][ 700/1563]	Loss: -10.6126 (nan on avg)
+Epoch: [10/10][ 800/1563]	Loss: -10.6745 (nan on avg)
+Epoch: [10/10][ 900/1563]	Loss: -10.6035 (nan on avg)
+Epoch: [10/10][1000/1563]	Loss: -10.9763 (nan on avg)
+Epoch: [10/10][1100/1563]	Loss: -10.9781 (nan on avg)
+Epoch: [10/10][1200/1563]	Loss: -10.8463 (nan on avg)
+Epoch: [10/10][1300/1563]	Loss: -11.1768 (nan on avg)
+Epoch: [10/10][1400/1563]	Loss: -11.4013 (nan on avg)
+Epoch: [10/10][1500/1563]	Loss: -11.3928 (nan on avg)
+
+* Epoch: [10/10]	Train loss: nan
+
+Criterion: CrossEntropyWithGradientPenalty(
+  (model): LeNet(
+    (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (fc1): Linear(in_features=400, out_features=120, bias=True)
+    (fc2): Linear(in_features=120, out_features=84, bias=True)
+    (fc3): Linear(in_features=84, out_features=10, bias=True)
+  )
+  (cross_entropy): CrossEntropyLoss()
+), average time: 0.014 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [10/10][   0/157]	Loss: -11.5423 (-11.5423 on avg)	Top-1 err: 18.7500 (18.7500 on avg)	Top-5 err: 18.7500 (18.7500 on avg)
+Test (on val set): [10/10][ 100/157]	Loss: -10.8554 (-11.3053 on avg)	Top-1 err: 28.1250 (23.5458 on avg)	Top-5 err: 25.0000 (21.8131 on avg)
+
+* Epoch: [10/10]	Test loss: -11.222	Top-1 err: 23.060	Top-5 err: 21.220
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.97      0.97      0.97       482
+           4       0.99      0.98      0.99       508
+           5       1.00      0.97      0.98       438
+           6       0.48      1.00      0.65       473
+           7       0.98      0.98      0.98       529
+           8       0.43      0.97      0.60       466
+           9       0.97      0.97      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.68      0.77      0.70      5000
+
+Current best error rate (top-1 and top-5 error): 22.84 21.22 
+
+Best error rate (top-1 and top-5 error): 22.84 21.22
+
+criterion: gp
+alpha schedule: [0, 0, 0, 0.025, 0.05, 0.075, 0.1, 0.1, 0.1, 0.1]
+optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0
+) lr: 0.001
+batch_size: 32
+epochs: 10
+total time: 266.130 seconds
+Epoch: [1/10][   0/313]	Loss: 27.0621 (27.0621 on avg)
+Epoch: [1/10][ 100/313]	Loss: 30.8712 (25.0593 on avg)
+Epoch: [1/10][ 200/313]	Loss: 30.8196 (25.5312 on avg)
+Epoch: [1/10][ 300/313]	Loss: 34.5487 (25.4239 on avg)
+
+* Epoch: [1/10]	Train loss: 25.349
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [1/10][   0/157]	Loss: 22.9084 (22.9084 on avg)	Top-1 err: 18.7500 (18.7500 on avg)	Top-5 err: 18.7500 (18.7500 on avg)
+Test (on val set): [1/10][ 100/157]	Loss: 34.4405 (25.4157 on avg)	Top-1 err: 28.1250 (22.6795 on avg)	Top-5 err: 28.1250 (20.7611 on avg)
+
+* Epoch: [1/10]	Test loss: 25.947	Top-1 err: 23.080	Top-5 err: 21.240
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.97      0.98      0.97       482
+           4       1.00      0.97      0.98       508
+           5       1.00      0.97      0.98       438
+           6       0.48      1.00      0.65       473
+           7       0.98      0.98      0.98       529
+           8       0.43      0.97      0.60       466
+           9       0.97      0.96      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.24 
+
+Epoch: [2/10][   0/313]	Loss: 23.1605 (23.1605 on avg)
+Epoch: [2/10][ 100/313]	Loss: 26.4132 (24.5522 on avg)
+Epoch: [2/10][ 200/313]	Loss: 22.6892 (25.3804 on avg)
+Epoch: [2/10][ 300/313]	Loss: 33.8181 (25.0471 on avg)
+
+* Epoch: [2/10]	Train loss: 24.961
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [2/10][   0/157]	Loss: 30.0666 (30.0666 on avg)	Top-1 err: 25.0000 (25.0000 on avg)	Top-5 err: 25.0000 (25.0000 on avg)
+Test (on val set): [2/10][ 100/157]	Loss: 22.3072 (25.5060 on avg)	Top-1 err: 21.8750 (22.9889 on avg)	Top-5 err: 18.7500 (21.2252 on avg)
+
+* Epoch: [2/10]	Test loss: 25.560	Top-1 err: 23.200	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.98      0.98      0.98       482
+           4       0.99      0.97      0.98       508
+           5       1.00      0.97      0.98       438
+           6       0.48      1.00      0.65       473
+           7       0.98      0.98      0.98       529
+           8       0.43      0.97      0.60       466
+           9       0.98      0.96      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.68      0.77      0.70      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.24 
+
+Epoch: [3/10][   0/313]	Loss: 41.2512 (41.2512 on avg)
+Epoch: [3/10][ 100/313]	Loss: 22.8082 (24.8193 on avg)
+Epoch: [3/10][ 200/313]	Loss: 30.4412 (25.1161 on avg)
+Epoch: [3/10][ 300/313]	Loss: 11.6321 (24.6562 on avg)
+
+* Epoch: [3/10]	Train loss: 24.662
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [3/10][   0/157]	Loss: 7.5042 (7.5042 on avg)	Top-1 err: 9.3750 (9.3750 on avg)	Top-5 err: 6.2500 (6.2500 on avg)
+Test (on val set): [3/10][ 100/157]	Loss: 26.0444 (25.6834 on avg)	Top-1 err: 25.0000 (23.7005 on avg)	Top-5 err: 21.8750 (21.5965 on avg)
+
+* Epoch: [3/10]	Test loss: 25.327	Top-1 err: 23.300	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.98      0.98       530
+           3       0.97      0.98      0.97       482
+           4       0.99      0.97      0.98       508
+           5       0.99      0.97      0.98       438
+           6       0.48      0.99      0.65       473
+           7       0.98      0.97      0.98       529
+           8       0.43      0.96      0.59       466
+           9       0.97      0.96      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.24 
+
+Epoch: [4/10][   0/313]	Loss: 26.0291 (26.0291 on avg)
+Epoch: [4/10][ 100/313]	Loss: 33.0762 (23.7252 on avg)
+Epoch: [4/10][ 200/313]	Loss: 21.8773 (23.7557 on avg)
+Epoch: [4/10][ 300/313]	Loss: 22.0433 (24.3632 on avg)
+
+* Epoch: [4/10]	Train loss: 24.466
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [4/10][   0/157]	Loss: 25.9613 (25.9613 on avg)	Top-1 err: 21.8750 (21.8750 on avg)	Top-5 err: 21.8750 (21.8750 on avg)
+Test (on val set): [4/10][ 100/157]	Loss: 26.3450 (25.3338 on avg)	Top-1 err: 21.8750 (23.3911 on avg)	Top-5 err: 21.8750 (21.4109 on avg)
+
+* Epoch: [4/10]	Test loss: 25.121	Top-1 err: 23.080	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.98      0.99      0.98       530
+           3       0.97      0.98      0.98       482
+           4       0.99      0.97      0.98       508
+           5       1.00      0.96      0.98       438
+           6       0.49      0.99      0.65       473
+           7       0.98      0.98      0.98       529
+           8       0.43      0.97      0.60       466
+           9       0.96      0.97      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [5/10][   0/313]	Loss: 22.3269 (22.3269 on avg)
+Epoch: [5/10][ 100/313]	Loss: 22.1103 (24.3612 on avg)
+Epoch: [5/10][ 200/313]	Loss: 22.2503 (23.5399 on avg)
+Epoch: [5/10][ 300/313]	Loss: 36.1289 (24.3194 on avg)
+
+* Epoch: [5/10]	Train loss: 24.178
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [5/10][   0/157]	Loss: 35.9268 (35.9268 on avg)	Top-1 err: 31.2500 (31.2500 on avg)	Top-5 err: 31.2500 (31.2500 on avg)
+Test (on val set): [5/10][ 100/157]	Loss: 32.3275 (24.4280 on avg)	Top-1 err: 28.1250 (24.0099 on avg)	Top-5 err: 28.1250 (21.3181 on avg)
+
+* Epoch: [5/10]	Test loss: 24.333	Top-1 err: 24.220	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.94      0.98      0.96       530
+           3       0.90      0.98      0.94       482
+           4       0.99      0.97      0.98       508
+           5       0.97      0.89      0.93       438
+           6       0.49      0.94      0.65       473
+           7       0.97      0.97      0.97       529
+           8       0.43      0.97      0.59       466
+           9       0.95      0.98      0.96       514
+
+    accuracy                           0.76      5000
+   macro avg       0.66      0.77      0.70      5000
+weighted avg       0.66      0.76      0.69      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [6/10][   0/313]	Loss: 14.1441 (14.1441 on avg)
+Epoch: [6/10][ 100/313]	Loss: 20.0571 (23.2615 on avg)
+Epoch: [6/10][ 200/313]	Loss: 13.6081 (22.3364 on avg)
+Epoch: [6/10][ 300/313]	Loss: 22.7193 (22.3887 on avg)
+
+* Epoch: [6/10]	Train loss: 22.389
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [6/10][   0/157]	Loss: 16.5065 (16.5065 on avg)	Top-1 err: 18.7500 (18.7500 on avg)	Top-5 err: 15.6250 (15.6250 on avg)
+Test (on val set): [6/10][ 100/157]	Loss: 34.3738 (22.8280 on avg)	Top-1 err: 34.3750 (23.5767 on avg)	Top-5 err: 31.2500 (21.2562 on avg)
+
+* Epoch: [6/10]	Test loss: 22.772	Top-1 err: 23.340	Top-5 err: 21.260
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.95      0.98      0.97       530
+           3       0.97      0.96      0.96       482
+           4       0.99      0.97      0.98       508
+           5       0.98      0.97      0.98       438
+           6       0.49      0.98      0.66       473
+           7       0.98      0.97      0.98       529
+           8       0.42      0.97      0.59       466
+           9       0.97      0.98      0.97       514
+
+    accuracy                           0.77      5000
+   macro avg       0.68      0.78      0.71      5000
+weighted avg       0.67      0.77      0.70      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [7/10][   0/313]	Loss: 23.1833 (23.1833 on avg)
+Epoch: [7/10][ 100/313]	Loss: 9.6936 (23.1010 on avg)
+Epoch: [7/10][ 200/313]	Loss: 17.4306 (21.8954 on avg)
+Epoch: [7/10][ 300/313]	Loss: 16.7837 (21.5400 on avg)
+
+* Epoch: [7/10]	Train loss: 21.453
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [7/10][   0/157]	Loss: 32.8102 (32.8102 on avg)	Top-1 err: 37.5000 (37.5000 on avg)	Top-5 err: 34.3750 (34.3750 on avg)
+Test (on val set): [7/10][ 100/157]	Loss: 13.1463 (19.9430 on avg)	Top-1 err: 15.6250 (25.4332 on avg)	Top-5 err: 12.5000 (21.0087 on avg)
+
+* Epoch: [7/10]	Test loss: 20.453	Top-1 err: 26.140	Top-5 err: 21.480
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.94      0.90      0.92       530
+           3       0.72      0.96      0.82       482
+           4       0.93      0.98      0.95       508
+           5       0.98      0.87      0.92       438
+           6       0.98      0.90      0.94       473
+           7       0.95      0.96      0.96       529
+           8       0.32      0.97      0.49       466
+           9       0.89      0.96      0.92       514
+
+    accuracy                           0.74      5000
+   macro avg       0.67      0.75      0.69      5000
+weighted avg       0.66      0.74      0.68      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [8/10][   0/313]	Loss: 11.8251 (11.8251 on avg)
+Epoch: [8/10][ 100/313]	Loss: 5.3005 (18.2286 on avg)
+Epoch: [8/10][ 200/313]	Loss: 15.0267 (14.7655 on avg)
+Epoch: [8/10][ 300/313]	Loss: 2.9765 (13.2161 on avg)
+
+* Epoch: [8/10]	Train loss: 13.106
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [8/10][   0/157]	Loss: 8.7134 (8.7134 on avg)	Top-1 err: 21.8750 (21.8750 on avg)	Top-5 err: 18.7500 (18.7500 on avg)
+Test (on val set): [8/10][ 100/157]	Loss: 10.8332 (9.2914 on avg)	Top-1 err: 28.1250 (27.9394 on avg)	Top-5 err: 25.0000 (21.2871 on avg)
+
+* Epoch: [8/10]	Test loss: 9.422	Top-1 err: 28.040	Top-5 err: 21.640
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.96      0.87      0.92       530
+           3       0.85      0.95      0.90       482
+           4       0.96      0.95      0.96       508
+           5       0.72      0.82      0.76       438
+           6       0.54      0.96      0.69       473
+           7       0.97      0.91      0.94       529
+           8       0.38      0.92      0.54       466
+           9       0.91      0.92      0.91       514
+
+    accuracy                           0.72      5000
+   macro avg       0.63      0.73      0.66      5000
+weighted avg       0.63      0.72      0.66      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [9/10][   0/313]	Loss: 5.4835 (5.4835 on avg)
+Epoch: [9/10][ 100/313]	Loss: 9.2211 (8.3507 on avg)
+Epoch: [9/10][ 200/313]	Loss: 9.1130 (7.6247 on avg)
+Epoch: [9/10][ 300/313]	Loss: 7.0714 (7.2641 on avg)
+
+* Epoch: [9/10]	Train loss: 7.226
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Test (on val set): [9/10][   0/157]	Loss: 4.7919 (4.7919 on avg)	Top-1 err: 28.1250 (28.1250 on avg)	Top-5 err: 18.7500 (18.7500 on avg)
+Test (on val set): [9/10][ 100/157]	Loss: 5.3502 (6.1387 on avg)	Top-1 err: 21.8750 (28.0631 on avg)	Top-5 err: 18.7500 (21.6584 on avg)
+
+* Epoch: [9/10]	Test loss: 6.054	Top-1 err: 27.280	Top-5 err: 21.340
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.96      0.86      0.91       530
+           3       0.94      0.94      0.94       482
+           4       0.98      0.94      0.96       508
+           5       0.86      0.90      0.88       438
+           6       0.41      0.99      0.58       473
+           7       0.95      0.88      0.91       529
+           8       0.46      0.94      0.61       466
+           9       0.95      0.93      0.94       514
+
+    accuracy                           0.73      5000
+   macro avg       0.65      0.74      0.67      5000
+weighted avg       0.65      0.73      0.67      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+Epoch: [10/10][   0/313]	Loss: 3.7155 (3.7155 on avg)
+Epoch: [10/10][ 100/313]	Loss: 3.4636 (5.5736 on avg)
+Epoch: [10/10][ 200/313]	Loss: 4.7681 (5.5721 on avg)
+Epoch: [10/10][ 300/313]	Loss: 6.1433 (5.3957 on avg)
+
+* Epoch: [10/10]	Train loss: 5.381
+
+Criterion: CrossEntropyLoss(), average time: 0.002 seconds
+
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/drd92/.local/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Test (on val set): [10/10][   0/157]	Loss: 5.3174 (5.3174 on avg)	Top-1 err: 25.0000 (25.0000 on avg)	Top-5 err: 21.8750 (21.8750 on avg)
+Test (on val set): [10/10][ 100/157]	Loss: 3.1671 (5.0865 on avg)	Top-1 err: 18.7500 (25.1238 on avg)	Top-5 err: 12.5000 (20.7921 on avg)
+
+* Epoch: [10/10]	Test loss: 5.190	Top-1 err: 25.580	Top-5 err: 21.360
+
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       487
+           1       0.00      0.00      0.00       573
+           2       0.96      0.93      0.94       530
+           3       0.95      0.95      0.95       482
+           4       0.98      0.95      0.96       508
+           5       0.85      0.95      0.90       438
+           6       0.38      0.98      0.55       473
+           7       0.97      0.89      0.93       529
+           8       0.57      0.95      0.71       466
+           9       0.94      0.95      0.95       514
+
+    accuracy                           0.74      5000
+   macro avg       0.66      0.76      0.69      5000
+weighted avg       0.65      0.74      0.68      5000
+
+FT Current best error rate (top-1 and top-5 error): 23.08 21.26 
+
+FT Best error rate (top-1 and top-5 error): 23.08 21.26
+
+FT criterion: CrossEntropyLoss
+optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0001
+    maximize: False
+    weight_decay: 0
+) lr: 0.0001
+batch_size: 32
+epochs: 10
+total time: 51.261 seconds

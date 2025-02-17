@@ -19,6 +19,7 @@ class CrossEntropyWithGradientPenalty(nn.Module):
             self.bad_concept_labels = bad_concept_labels
         else:
             self.bad_concept_labels = torch.tensor([])
+        self.bad_concept_labels = self.bad_concept_labels.to(next(model.parameters()).device)
         self.cross_entropy = nn.CrossEntropyLoss()
         
     def good_bad_split(self, outputs, targets):
@@ -54,7 +55,7 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         
         # get gradients just for bad outputs
         bad_grads = torch.autograd.grad(
-            bad_ce_loss, self.model.parameters(), create_graph=True
+            bad_ce_loss, self.model.parameters(), create_graph=True, retain_graph=True
         )
         
         # Compute the norm of the bad gradients
@@ -63,7 +64,7 @@ class CrossEntropyWithGradientPenalty(nn.Module):
         )
         
         # Combined loss: cross entropy on good outputs - cross entropy on bad outputs + alpha * gradient norm
-        loss = good_ce_loss - bad_ce_loss + self.alpha * bad_grad_norm
+        loss = good_ce_loss + self.alpha * (bad_grad_norm - bad_ce_loss)
         
         return loss
     
